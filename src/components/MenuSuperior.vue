@@ -11,7 +11,7 @@ const menuAberto = ref(false);
 <template>
     <header>
       <div class="header--logo">
-        <img src="@/assets/logoFakeStore.png" alt="Logo" />
+        <img src="@/assets/logoFakeStore.png" alt="Logo" style="border-radius: 5px;"/>
         <h1 style="color: #D5618F;">FakeStore</h1>
       </div>
       <nav>
