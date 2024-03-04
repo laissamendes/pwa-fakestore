@@ -1,7 +1,18 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import { useScreen } from '@/composables/screen';
+import CartPlus from 'vue-material-design-icons/CartPlus.vue';
+import Account from 'vue-material-design-icons/Account.vue';
+import Menu from 'vue-material-design-icons/Menu.vue';
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiHomeVariantOutline } from '@mdi/js';
+
+
+
+
 const produtos = ref([]);
+const { browserWidth, deviceWidth, isMobile } = useScreen();
 
 onMounted(async () => {
   const response = await axios.get('https://fakestoreapi.com/products');
@@ -13,7 +24,11 @@ const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
 
 <template>
     <div>
-      <h1 style="color: #FD8139;">Produtos</h1>
+      <h1 style="color: #FD8139;">
+       Produtos - {{ browserWidth }} - {{ deviceWidth }} - {{
+      isMobile}} 
+      <span v-if="isMobile">É móvel</span>
+    </h1>
       <div class="container">
         <div class="card" v-for="produto in produtos" :key="produto.id">
           <h1 class="card--title">{{ produto.title }}</h1>
@@ -22,14 +37,19 @@ const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
           <img class="card--avatar" :src="produto.image" :alt="produto.title" />
         </div>
       </div>
+      <div class="rodape" v-if="isMobile">
+        <ul>
+          <li><Account /></li>
+          <li><CartPlus /></li>
+          <li><svg-icon type="mdi" :path="path"></svg-icon ></li>
+          <li></li>
+        </ul>
+      </div>
     </div>
   </template>
   <style scoped>
   .container > .card > .card--title{
     color: #FD8139;
-  }
-  .container > .card > img{
-    
   }
   .container {
     display: flex;
