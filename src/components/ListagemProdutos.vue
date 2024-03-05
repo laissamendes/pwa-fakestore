@@ -5,8 +5,6 @@ import { useScreen } from '@/composables/screen';
 import CartPlus from 'vue-material-design-icons/CartPlus.vue';
 import Account from 'vue-material-design-icons/Account.vue';
 import Menu from 'vue-material-design-icons/Menu.vue';
-import SvgIcon from '@jamescoyle/vue-icon';
-import { mdiHomeVariantOutline } from '@mdi/js';
 
 
 
@@ -33,17 +31,19 @@ const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
         <div class="card" v-for="produto in produtos" :key="produto.id">
           <h1 class="card--title">{{ produto.title }}</h1>
            <!--<p>{{ produto.description }}</p>-->
-           <p style="color: #FD8139;">{{ formatPrice(produto.price) }}</p>
+           <p style="color: #FD8139;"  >{{ formatPrice(produto.price) }}</p>
           <img class="card--avatar" :src="produto.image" :alt="produto.title" />
         </div>
       </div>
-      <div class="rodape" v-if="isMobile">
-        <ul>
+      <div class="rodape-responsivo" v-if="isMobile" style="color: #FD8139;">
+          <ul class="btn-rodape">
           <li><Account /></li>
           <li><CartPlus /></li>
-          <li><svg-icon type="mdi" :path="path"></svg-icon ></li>
-          <li></li>
+          <li><Menu /></li>
         </ul>
+      </div>
+      <div class="rodape-descktop" style="background-color: #FD8139; color: white; text-align: center;" v-if="browserWidth >= 768">
+        <footer>By: Laíssa Mendes</footer>
       </div>
     </div>
   </template>
@@ -85,6 +85,12 @@ const formatPrice = (price) => `R$ ${price.toFixed(2).replace('.', ',')}`;
     text-transform: capitalize;
     font-size: 1.1rem;
     margin-top: 0.5rem;
+  }
+  .rodape-responsivo{
+border-radius: 10px;
+border-color: #FD8139;
+border-style: solid;
+box-shadow: 5px 5px 15px black;
   }
   @media (max-width: 768px) {
   .container {
