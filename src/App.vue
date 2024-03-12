@@ -10,7 +10,7 @@
     <main>
       <router-view />
     </main>
-    <footer>
+    <footer style="color: #D5618F; text-align: center;">
       <p>Copyright &copy; 2024</p>
     </footer>
   </div>
