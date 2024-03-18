@@ -12,7 +12,7 @@
   <header>
     <div class="header--logo">
       <img src="@/assets/logoFakeStore.png" alt="Logo" />
-      <h1>FakeStore - MD</h1>
+      <h1>FakeStore - XL</h1>
     </div>
     <nav>
       <ul :class="menuAberto ? 'menu' : ''">
@@ -39,6 +39,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #FD8139;
   }
 
   .header--logo {

@@ -1,13 +1,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
-import { useScreen } from '@/composables/screen';
+import { useLayout } from '@/composables/screen';
 import CartPlus from 'vue-material-design-icons/CartPlus.vue';
 import Account from 'vue-material-design-icons/Account.vue';
 import Menu from 'vue-material-design-icons/Menu.vue';
-
-
-
 
 const produtos = ref([]);
 const { browserWidth, deviceWidth, isMobile } = useScreen();

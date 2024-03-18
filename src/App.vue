@@ -1,12 +1,13 @@
 <script setup>
-  import { useMonitor } from '@/composables/monitor';
+  import { useLayout } from '@/composables/layout.js';
+  const { layout } = useLayout();
 
-  const { menu } = useMonitor();
+ 
 </script>
 
 <template>
   <div>
-    <component :is="menu" />
+    <component :is="layout" />
     <main>
       <router-view />
     </main>
